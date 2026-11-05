@@ -1,0 +1,11 @@
+*.exe
+*.out
+*.o
+.vscode/
+
+laby/Parking_2/
+laby/Łańcuch_1/
+wzor
+brut
+gen
+t.in
