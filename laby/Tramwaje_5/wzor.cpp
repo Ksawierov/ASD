@@ -26,7 +26,7 @@ long long f(long long arrTime, long long period) {
     return (((arrTime - 1) / period) + 1 ) * period;
 }
 
-vector<long long> dijkstra(vector<vector<Edge>> G) {
+vector<long long> dijkstra(const vector<vector<Edge>>& G) {
     int n = G.size();
     vector<long long> dist(n, INF);
     vector<bool> vis(n, 0);
@@ -43,7 +43,7 @@ vector<long long> dijkstra(vector<vector<Edge>> G) {
         vis[node.num] = true;
     
         // cout << node.num << " " << node.cost << "\n";
-        for (auto s : G[node.num]) {
+        for (const auto& s : G[node.num]) {
             long long min_cost = min(dist[s.end], f(dist[node.num], s.period) + s.cost);
             if(min_cost < dist[s.end]) {
                 pq.push({s.end, min_cost});
@@ -73,6 +73,6 @@ int main() {
     }
     vector<long long> v = dijkstra(G);
     for (int i = 1; i <= n; i++) {
-        cout << v[i] + (1 - ((i)%2)) << '\n';
+        cout << v[i] << '\n';
     }
 }
